@@ -1,0 +1,19 @@
+Melete Skill
+Copyright 2026 momonfucius and Melete contributors
+
+This product includes software developed as part of the Melete project.
+
+Licensing:
+- Code (scripts/, assets/) is licensed under the Apache License, Version 2.0 (see LICENSE).
+- The Melete Lens and written specification (SKILL.md, references/) are licensed
+  under Creative Commons Attribution 4.0 International (CC BY 4.0):
+  https://creativecommons.org/licenses/by/4.0/
+
+Name:
+- "Melete" is reserved by the author. Derivative works must credit the original
+  source (Melete Skill) and must not use the name for any feature that views
+  other people's data.
+
+本项目的代码使用 Apache 2.0；照见图谱与文字规范使用 CC BY 4.0。
+使用、改编或再发布时请注明来源：Melete Skill。
+"Melete"名称由作者保留，不得用于查看他人数据的功能。

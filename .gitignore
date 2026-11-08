@@ -1,0 +1,6 @@
+.DS_Store
+node_modules/
+# 生成的复盘与分享文件可能含个人信息，不进仓库
+melete/
+melete-share*
+share.json
