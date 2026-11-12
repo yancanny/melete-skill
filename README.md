@@ -1,110 +1,40 @@
 # Melete Skill
 
-回看你和 AI 是怎么一起做事的。
+English | [简体中文](README.zh-CN.md) | [Español](README.es.md)
 
-> Melete（墨勒忒）是希腊神话中掌管练习与沉思的缪斯。
+Look back at how you and AI work together.
 
-## Melete 是什么
+Melete is an Agent Skill for reflecting on your conversations with AI. Ask your agent for a debrief and it can offer observations grounded in evidence, possible interpretations, a question to consider, and—when you have stated a goal—small experiments for a later review. The AI's own conduct is part of the review. Melete does not assign a score or decide what good use means for you.
 
-Melete 是一个 Agent Skill。装进你常用的 AI 工具以后，对它说一声"复盘"，它会回看你这段时间和 AI 的对话，写出一份"你的 Melete"：几面镜子，而不是一张成绩单。
+## What it can do
 
-它不告诉你哪种用法对、哪种用法错。同一种做法——把事情交给 AI、直接用初稿、不回头核对——在不同的时候都可能是合理的。Melete 只负责让你看清，好坏由你自己判断。
+- Review a calendar year, the last 7, 30 or 90 days, the last 12 months, all available history, or a custom period. Coverage depends on the agent and what it can access.
+- Show several observations with sources and at least two possible readings. Review the AI's responses as well as your own choices.
+- Offer a question and, if you have described an intention, one or two small experiments to revisit later.
+- Offer a private letter based on your own words. It may include AI guesses about feelings or health; such guesses can be wrong and are not a medical diagnosis. The letter is kept closed by default and is never included in a share.
+- Create a locally saved share image or HTML when you request one.
 
-## 能用来做什么
+## Install and use
 
-- **年度复盘**：回看这一年你和 AI 一起做了什么、怎么分工、哪些在变化。也可以选 7 天、30 天、90 天、近 1 年、全部，或任意一段时间。
-- **几面镜子**：挑出三到五个值得一看的观察，每个都附上出处，并给出至少两种可能的读法。
-- **AI 也在镜子里**：至少一面镜子照 AI——它有没有一味顺着你、有没有答得太笃定、有没有替你做了决定。
-- **一个问题，和小实验**：留一个问题给你想。如果你说过想改变什么，再给一两个小实验，下次复盘时看看有没有变化。
-- **写给你自己的信**：从你亲手写下的话里，看见你在乎什么、你的心绪和身体状况。AI 也会说出它对你的猜测，涉及健康时甚至会猜可能的病名——AI 的判断并不准确，请以医生的诊断为准。默认收着，想看时才打开。
-- **分享长图**：想分享时，生成一张排版好的长图，也可以要一份 HTML。只保存在你的设备上，发不发、发到哪里，由你决定。
+Copy this repository's contents into the Skill directory of your tool, for example `~/.claude/skills/melete/` for Claude Code or `~/.codex/skills/melete/` for Codex. Other tools that support `SKILL.md` may use their own Skill directory; WorkBuddy compatibility has not yet been verified. Then ask, for example: “Review how I worked with AI this year.”
 
-## 怎么用
+In a web chat without a Skill installer, upload `references/lens/export/lens-for-chat.md` and ask for a review using it. The review is limited to the conversations and memory the AI can actually access and should say so.
 
-把整个文件夹放进你的 AI 工具的 Skill 目录：
+The review itself has no software dependencies. Creating a long image needs Node.js 22 or later and an installed Chrome, Edge or Chromium; otherwise HTML is available.
 
-| 工具 | 位置 |
-|---|---|
-| Claude Code | `~/.claude/skills/melete/` |
-| Codex | `~/.codex/skills/melete/` |
-| WorkBuddy | WorkBuddy 的安装与兼容方式仍待验证 |
-| 其他支持 SKILL.md 的工具 | 放进它的 Skill 目录 |
+## Principles and privacy
 
-然后对 AI 说：
+Melete makes your use visible and leaves judgment to you. Observations should be traceable to conversations, with more than one reading where possible. It reviews the AI as well. The project runs no server and collects no data; how conversation material is processed depends on the AI tool and model you choose. Your private letter never enters shared output. You can ask to delete Melete-generated files, and Melete is not a tool for viewing other people's data.
 
-> 复盘一下我今年是怎么用 AI 的。
+The framework, the society view, the private letter, possible reference practices, sharing numbers, accounts, sync and future licensing remain open to revision. Existing released versions retain their licenses. The project welcomes critique and contributions; future redesigns may change existing behavior.
 
-在纯网页对话里（ChatGPT、DeepSeek 等）：上传 `references/lens/export/lens-for-chat.md`，再说"按这份图谱的回顾的做法，复盘我们之前的对话"。这时 AI 只能看到它记得的部分，复盘开头会写明。
+## Other Melete versions
 
-**环境要求**：复盘本身不需要任何依赖。生成长图需要 Node.js 22 以上，以及电脑上已经装好的 Chrome、Edge 或 Chromium；没有的话会退回到 HTML。
+- [Melete DSH](https://github.com/yancanny/dsh-plugin-melete): the DeepSeek Harness plugin.
+- [Melete Magpie](https://github.com/yancanny/magpie-plugin-melete): review DSH or Codex through Magpie.
 
-## 理念
+## Layout and license
 
-### 相对稳定
+`SKILL.md` is the entry point; `references/` holds the principles, lens and report guidance; `scripts/` contains optional local tools and `assets/share.html` the sharing template.
 
-- **照见**：让你的用法被看见。
-- **好坏由你定义**：不预设"好用户"的标准；建议只对照你自己说过的目标，你没说过，就只呈现、不建议。
-- **每句话都有出处**：每个观察都能追溯到具体的对话，并给出至少两种读法；看不清就说看不清。
-- **AI 也在镜子里**：不只照你，也照 AI 待你的方式。
-- **本地优先**：Melete 不运营服务器，不收集任何数据，不联网。你的记录只交给你自己正在用的 AI，复盘开头会写明是谁在看。
-- **写给你自己的信不外传**：默认收着，不存盘，永远不进分享。
-- **随时可退出**：说一声，就删除 Melete 生成的全部文件。
-- **不做"查看他人数据"**：Melete 只给你看你自己。
-
-### 还在想
-
-- **不评判**：现在 Melete 不评判。将来如果大家一起总结出公认的好做法，可能会作为参照加进来，用不用由你选。
-- **分享卡上的数字**：现在允许出现"312 段对话"这样的数字，以后再看。
-- **"与社会"这一面**：看你们的产出走向哪里、碰到谁。看的范围和说法可能还要收一收。
-- **写给你自己的信**：AI 能对你做多少猜测（尤其是情绪与健康），怎么打开、怎么保存，都还在调整。
-- **云同步和账号**：现在不做，将来再议。
-- **照见图谱**：维度的数量和名字还会调整。
-- **许可**：将来的版本可能调整，已经发布的版本不变。
-
-### 目标
-
-让社会整体尽可能幸福，也让尽可能多的人幸福。Melete 走向它的方式只有一种：照见。看得清、选得了的人多了，世界会更好一点。
-
-## 写在前面的话
-
-实不相瞒，目前的 Melete 几乎凭我自己拍脑袋折腾出来，免不了带着极强烈的个人盲目和偏执。往后我难保不对它下狠手、搞几次彻底的"破坏性大修"，但我还没混账到把梯子全抽了，该垫的软着陆和旧兼容其实做了一部分。真理不在我兜里，我特别想听听五湖四海有趣的人怎么骂它、改它，大家一起敲敲打打，这东西才不至于沦为一具自娱自乐的标本。
-
-每份复盘都会记下当时用的图谱版本，尽量让旧的复盘以后还能打开。
-
-欢迎在 Issues 里骂它、改它、提想法。
-
-## 结构
-
-```
-SKILL.md                入口：流程与决策
-references/
-  principles.md         必守原则
-  lens/                 照见图谱：怎么看
-  report-template.md    用词：禁用、慎用与替代说法
-  range.md              回看范围
-  triggers.md           什么时候该用 Melete
-  share-spec.md         分享放什么、不放什么
-  gotchas.md            踩过的坑
-assets/share.html       分享模板
-scripts/                生成长图、检查分享、读取 DSH 记录
-```
-
-## 许可
-
-- 代码（`scripts/`、`assets/`）：Apache License 2.0，见 `LICENSE`。
-- 照见图谱与文字规范（`references/`、`SKILL.md`）：CC BY 4.0。
-- "Melete"名称由作者保留：使用名称须注明来源，且不得用于查看他人数据的功能。详见 `NOTICE`。
-
----
-
-## English
-
-Melete is an Agent Skill that looks back at how you work with AI.
-
-Say "复盘" (debrief) to your AI, and Melete reads your past conversations and writes a few mirrors — never a scorecard. Every observation cites its sources and offers at least two readings; the AI is in the mirror too. Default range is the calendar year; 7 / 30 / 90 days, the last 12 months, everything, or any custom range also work. When you want to share, it renders a long image (and HTML on request), saved only on your device.
-
-**Values.** Relatively stable: let your use be seen; you define what's good; every sentence traces back to evidence; the AI is reviewed too; local-first with no servers, no telemetry, no network; your private letter never leaves; you can delete everything anytime; never a tool for viewing other people's data. Still thinking: whether "not judging" stays absolute, numbers on share cards, the "society" view, how the private letter is opened and stored, sync and accounts, the Lens dimensions, and licensing of future versions.
-
-**A note from the author.** Melete is, for now, largely one person's guesswork, with all the blind spots that implies. There may be breaking redesigns ahead, though some soft landings and backward compatibility are already in place. I'd love to hear people everywhere critique it and reshape it.
-
-Code under Apache-2.0; the Lens and written spec under CC BY 4.0.
+Code and assets: Apache-2.0. The Lens and written specification: CC BY 4.0. The Melete name is reserved by the author; attribution and limits on viewing other people's data are described in [NOTICE](NOTICE).
